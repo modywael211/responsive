@@ -9,7 +9,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "client", "src"),
       "@shared": path.resolve(__dirname, "shared"),
       "@assets": path.resolve(__dirname, "attached_assets"),
-    },
+    }
   },
   root: path.resolve(__dirname, "client"),
   build: {
@@ -29,6 +29,9 @@ export default defineConfig({
     },
     minify: 'terser',
     target: 'es2015'
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', '@vitejs/plugin-react']
   },
   server: {
     port: 3000,

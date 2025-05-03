@@ -1,13 +1,14 @@
 [build]
   base = "/"
-  command = "npm ci --include=dev && npm run build:client"
+  command = "npm install && npm install @vitejs/plugin-react --save-dev && npm run build:client"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
-  NPM_FLAGS = "--legacy-peer-deps"
+  NPM_FLAGS = "--legacy-peer-deps --no-optional"
   CI = "true"
   NODE_ENV = "production"
+  VITE_CJS_IGNORE_WARNING = "true"
 
 [[redirects]]
   from = "/*"
