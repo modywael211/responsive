@@ -5,8 +5,6 @@ publish = "dist"
 [build.environment]
 NODE_VERSION = "16.20.0"
 NPM_VERSION = "8.19.4"
-CI = "true"
-NODE_ENV = "production"
 
 [[redirects]]
 from = "/*"
