@@ -1,6 +1,6 @@
 [build]
   base = "/"
-  command = "npm run build:client"
+  command = "npm install && npm run build:client"
   publish = "dist"
 
 [build.environment]
@@ -26,4 +26,4 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self' 'unsafe-inline' 'unsafe-eval' *.netlify.app; img-src 'self' data: blob: *.netlify.app; connect-src 'self' *.netlify.app;" 
+    Content-Security-Policy = "default-src 'self' 'unsafe-inline' 'unsafe-eval' *.netlify.app; img-src 'self' data: blob: https:; media-src 'self' https:; connect-src 'self' https:; font-src 'self' data: https:;" 
