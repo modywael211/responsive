@@ -4,7 +4,6 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react()],
-  base: '/responsive/',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "client/src"),

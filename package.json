@@ -4,8 +4,8 @@
   "type": "module",
   "license": "MIT",
   "engines": {
-    "node": "16.x",
-    "npm": "8.x"
+    "node": ">=16.20.0",
+    "npm": ">=8.19.4"
   },
   "scripts": {
     "dev": "vite",
