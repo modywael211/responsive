@@ -6,20 +6,14 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "client/src"),
-      "@shared": path.resolve(__dirname, "shared"),
-      "@assets": path.resolve(__dirname, "attached_assets"),
+      "@": path.resolve(__dirname, "src")
     }
   },
-  root: path.resolve(__dirname, "client"),
   build: {
-    outDir: path.resolve(__dirname, "dist"),
+    outDir: "dist",
     emptyOutDir: true,
     sourcemap: true,
     rollupOptions: {
-      input: {
-        main: path.resolve(__dirname, "client/index.html"),
-      },
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom', 'framer-motion'],
@@ -29,9 +23,6 @@ export default defineConfig({
     },
     minify: 'terser',
     target: 'es2015'
-  },
-  optimizeDeps: {
-    include: ['react', 'react-dom', '@vitejs/plugin-react']
   },
   server: {
     port: 3000,

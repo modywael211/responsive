@@ -51,10 +51,119 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-[hsl(var(--border))];
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased min-h-screen w-full overflow-x-hidden;
+  }
+}
+
+/* Base Layout */
+.app-container {
+  @apply flex flex-col min-h-screen w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.main-content {
+  @apply flex-grow flex flex-col items-center justify-center py-8 sm:py-12 lg:py-16;
+}
+
+/* Responsive Typography */
+.title {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center;
+}
+
+.subtitle {
+  @apply text-base sm:text-lg md:text-xl lg:text-2xl text-center text-muted-foreground;
+}
+
+/* Coin Container */
+.coin-container {
+  @apply relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56;
+  perspective: 1000px;
+}
+
+/* Controls Container */
+.controls-container {
+  @apply flex flex-col sm:flex-row gap-4 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto mt-8;
+}
+
+/* Button Sizing */
+.action-button {
+  @apply px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base md:text-lg;
+}
+
+/* Stats Container */
+.stats-container {
+  @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto mt-8;
+}
+
+.stat-card {
+  @apply p-4 rounded-lg bg-card text-card-foreground;
+}
+
+/* Mobile-First Responsive Design */
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+  .grid {
+    @apply gap-3;
+  }
+  .coin-container {
+    @apply w-24 h-24;
+    transform: scale(0.8);
+  }
+  .controls-container {
+    @apply flex-col items-center;
+  }
+  .action-button {
+    @apply w-full;
+  }
+}
+
+/* Tablet Responsive Design */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    @apply px-6;
+  }
+  .grid {
+    @apply gap-4;
+  }
+  .coin-container {
+    transform: scale(0.9);
+  }
+}
+
+/* Desktop Responsive Design */
+@media (min-width: 1025px) {
+  .container {
+    @apply px-8;
+  }
+  .grid {
+    @apply gap-5;
+  }
+  .coin-container {
+    transform: scale(1);
+  }
+}
+
+/* iPhone Safe Area */
+@supports (padding: max(0px)) {
+  .app-container {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Landscape Mode */
+@media (orientation: landscape) and (max-height: 600px) {
+  .main-content {
+    @apply py-4;
+  }
+  .coin-container {
+    @apply w-20 h-20;
+    transform: scale(0.7);
   }
 }
 
@@ -309,25 +418,6 @@
 .toast-enter {
   animation: toast-slide 0.2s ease-out;
   will-change: transform, opacity;
-}
-
-/* Responsive Design */
-@media (max-width: 640px) {
-  .container { @apply px-4; }
-  .grid { @apply gap-3; }
-  .text-2xl { @apply text-xl; }
-  .w-32 { @apply w-24; }
-  .h-32 { @apply h-24; }
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-  .container { @apply px-6; }
-  .grid { @apply gap-4; }
-}
-
-@media (min-width: 1025px) {
-  .container { @apply px-8; }
-  .grid { @apply gap-5; }
 }
 
 /* Dark Mode Enhancements */
